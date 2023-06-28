@@ -41,7 +41,7 @@ def load(filename: str, tileSize: tuple) -> tuple[TileGroup, ObjectList]:
     objectLayer = [
         objectlayer
         for objectlayer in tiledMap.layers
-        if isinstance(objectlayer, pytmx.TiledObject)
+        if isinstance(objectlayer, pytmx.TiledObjectGroup)
     ]
 
     objectList = ObjectList(

@@ -25,7 +25,6 @@ def load(filename: str, tileSize: tuple) -> tuple[TileGroup, ObjectList]:
                 ],
                 tiledMap.get_tile_properties(x, y, layer_index),
                 vars(layer),
-                tileGroup,
             )
             if tiledMap.get_tile_properties(x, y, layer_index)["frames"]
             else VisibleTile(
@@ -33,7 +32,6 @@ def load(filename: str, tileSize: tuple) -> tuple[TileGroup, ObjectList]:
                 image,
                 tiledMap.get_tile_properties(x, y, layer_index),
                 vars(layer),
-                tileGroup,
             )
             for layer_index, layer in enumerate(tileLayers)
             for x, y, image in layer.tiles()

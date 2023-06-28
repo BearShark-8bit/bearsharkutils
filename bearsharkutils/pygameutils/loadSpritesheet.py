@@ -12,28 +12,15 @@ def loadSpritesheet(
     @param rows Number
     @param durationsMs
     """
-    frameList: list[Frame] = []
+
     spritesheet = pygame.image.load(filename)
-    for i in range(rows):
-        frameList.append(
-            Frame(
-                spritesheet.subsurface(pygame.Rect(i * frameSize[0], 0, *frameSize)),
-                durationsMs[i],
-            )
+
+    frameList: list[Frame] = [
+        Frame(
+            spritesheet.subsurface(pygame.Rect(i * frameSize[0], 0, *frameSize)),
+            durationsMs[i],
         )
+        for i in range(rows)
+    ]
 
     return frameList
-
-
-def text(
-    surf: pygame.Surface,
-    text: str,
-    size: int,
-    color: tuple,
-    antialias: bool,
-    **rectkvargs
-):
-    font = pygame.font.SysFont(None, size)
-    img = font.render(text, antialias, color)
-    rect = img.get_rect(**rectkvargs)
-    surf.blit(img, rect)

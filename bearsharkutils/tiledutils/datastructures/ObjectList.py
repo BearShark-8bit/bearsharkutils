@@ -28,22 +28,8 @@ class ObjectList(list[Object]):
         """
         This function searches for objects in a ObjectList based on their properties, such as gid or type.
         """
-        filteredList = ObjectList()
-        for object in self:
-            if object.props[key] == value:
-                filteredList.append(object)
+        istype = lambda obj: obj.props[key] == value
+
+        filteredList = ObjectList(*filter(istype, self))
 
         return filteredList
-
-    # def search_by_layerProps(self: list[Object], key: Literal[], value="if"):
-    #     """
-    #     This function searches for objects in a ObjectList based on their layer properties matching a given
-    #     key-value pair.
-    #     """
-    #     filteredList = ObjectList()
-    #     for object in self:
-    #         if object.layerProps[key] == value:
-    #             filteredList.append(object)
-    #         elif object.layerProps[key] and value == "if":
-    #             filteredList.append(object)
-    #     return filteredList
